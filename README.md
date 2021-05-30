@@ -1,1 +1,1 @@
-Hangman-master
+hangman-game
