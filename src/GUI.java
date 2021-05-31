@@ -299,14 +299,18 @@ public class GUI extends JFrame implements ActionListener, MouseListener {
 		wordAnswer = wordAnswerStr.toCharArray();
 		wordGuess = new char[wordAnswer.length];
 
-		int wordShowCount = 0;
-		int wordShowMax = (int) (Math.floor(wordAnswer.length * 3 / 10));
+		int wordHideCount = 0;
+		int wordHideMax = (int) (Math.floor(wordAnswer.length * 3 / 10));
 
 		for (int i = 0; i < wordGuess.length; i++) {
-			wordGuess[i] = '_';
-			if (Math.random() < 0.3 && wordShowCount < wordShowMax) {
-				wordGuess[i] = wordAnswer[i];
-				wordShowCount++;
+			wordGuess[i] = wordAnswer[i];
+			if (Math.random() < 0.3 && wordHideCount < wordHideMax) {
+				wordGuess[i] = '_';
+				wordHideCount++;
+			}
+			if (wordHideCount == 0 && i == wordGuess.length - 1) {
+				wordGuess[i] = '_';
+				wordHideCount++;
 			}
 		}
 	}
